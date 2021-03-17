@@ -1,8 +1,7 @@
-import './App.css';
+import React, { useState } from 'react';
 import About from './components/About';
 import Nav from './components/Nav';
 import Gallery from './components/Gallery';
-import { useState } from 'react';
 
 function App() {
     const [categories] = useState([
@@ -12,16 +11,15 @@ function App() {
         { name: 'landscape', description: 'Fields, farmhouses, waterfalls, and the beauty of nature' }
     ]);
     const [currentCategory, setCurrentCategory] = useState(categories[0]);
-    
+
     return (
         <div>
-            <Nav categories={categories} setCurrentCategory={setCurrentCategory} currentCategory={currentCategory}>
-            </Nav>
+            <Nav 
+                categories={categories} setCurrentCategory={setCurrentCategory} currentCategory={currentCategory}
+            ></Nav>
             <main>
-                <div>
-                    <Gallery></Gallery>
-                    <About></About>
-                </div>
+                <Gallery currentCategory={currentCategory}></Gallery>
+                <About></About>
             </main>
         </div>
     );
